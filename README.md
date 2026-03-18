@@ -68,191 +68,239 @@ add address=10.0.0.0/8     list=PRIVATE-LANS
 add address=172.16.0.0/12  list=PRIVATE-LANS
 add address=192.168.0.0/16 list=PRIVATE-LANS
 
-# https://github.com/itdoginfo/allow-domains/blob/main/Subnets/IPv4/cloudflare.lst
 /ip firewall address-list
 remove [find dynamic=no list=CLOUDFLARE]
-add address=103.21.244.0/22  list=CLOUDFLARE
-add address=103.22.200.0/22  list=CLOUDFLARE
-add address=103.31.4.0/22    list=CLOUDFLARE
-add address=104.16.0.0/13    list=CLOUDFLARE
-add address=104.24.0.0/14    list=CLOUDFLARE
-add address=108.162.192.0/18 list=CLOUDFLARE
-add address=131.0.72.0/22    list=CLOUDFLARE
-add address=141.101.64.0/18  list=CLOUDFLARE
-add address=162.158.0.0/15   list=CLOUDFLARE
-add address=172.64.0.0/13    list=CLOUDFLARE
-add address=173.245.48.0/20  list=CLOUDFLARE
-add address=188.114.96.0/20  list=CLOUDFLARE
-add address=190.93.240.0/20  list=CLOUDFLARE
-add address=197.234.240.0/22 list=CLOUDFLARE
-add address=198.41.128.0/17  list=CLOUDFLARE
+add address=103.21.244.0/22    list=CLOUDFLARE
+add address=103.22.200.0/22    list=CLOUDFLARE
+add address=103.31.4.0/22      list=CLOUDFLARE
+add address=104.16.0.0/13      list=CLOUDFLARE
+add address=104.24.0.0/14      list=CLOUDFLARE
+add address=108.162.192.0/18   list=CLOUDFLARE
+add address=131.0.72.0/22      list=CLOUDFLARE
+add address=141.101.64.0/18    list=CLOUDFLARE
+add address=162.158.0.0/15     list=CLOUDFLARE
+add address=172.64.0.0/13      list=CLOUDFLARE
+add address=173.245.48.0/20    list=CLOUDFLARE
+add address=188.114.96.0/20    list=CLOUDFLARE
+add address=190.93.240.0/20    list=CLOUDFLARE
+add address=197.234.240.0/22   list=CLOUDFLARE
+add address=198.41.128.0/17    list=CLOUDFLARE
 
-# https://gist.github.com/parsibox/1365787cda61002caa28cb6384fa23fb
-# https://github.com/itdoginfo/allow-domains/blob/main/Subnets/IPv4/Meta.lst
-# https://suip.biz/ru/?act=ipaggregator
 /ip firewall address-list
 remove [find dynamic=no list=META]
-add address=3.33.221.48/32    list=META
-add address=3.33.252.61/32    list=META
-add address=15.197.206.217/32 list=META
-add address=15.197.210.208/32 list=META
-add address=31.13.24.0/21     list=META
-add address=31.13.64.0/18     list=META
-add address=34.192.181.12/32  list=META
-add address=34.193.38.112/32  list=META
-add address=34.194.71.217/32  list=META
-add address=34.194.255.230/32 list=META
-add address=45.64.40.0/22     list=META
-add address=57.141.0.0/24     list=META
-add address=57.141.2.0/24     list=META
-add address=57.141.4.0/24     list=META
-add address=57.141.6.0/24     list=META
-add address=57.141.8.0/24     list=META
-add address=57.141.10.0/24    list=META
-add address=57.141.12.0/24    list=META
-add address=57.144.0.0/14     list=META
-add address=66.220.144.0/20   list=META
-add address=69.63.176.0/20    list=META
-add address=69.171.224.0/19   list=META
-add address=74.119.76.0/22    list=META
-add address=102.132.96.0/20   list=META
-add address=103.4.96.0/22     list=META
-add address=129.134.0.0/17    list=META
-add address=157.240.0.0/17    list=META
-add address=157.240.192.0/18  list=META
-add address=163.70.128.0/17   list=META
-add address=173.252.64.0/18   list=META
-add address=179.60.192.0/22   list=META
-add address=185.60.216.0/22   list=META
-add address=185.89.216.0/22   list=META
-add address=204.15.20.0/22    list=META
+add address=3.33.221.48        list=META
+add address=3.33.252.61        list=META
+add address=15.197.206.217     list=META
+add address=15.197.210.208     list=META
+add address=31.13.24.0/21      list=META
+add address=31.13.64.0/18      list=META
+add address=34.192.181.12      list=META
+add address=34.193.38.112      list=META
+add address=34.194.71.217      list=META
+add address=34.194.255.230     list=META
+add address=45.64.40.0/22      list=META
+add address=57.141.0.0/24      list=META
+add address=57.141.2.0/24      list=META
+add address=57.141.4.0/24      list=META
+add address=57.141.6.0/24      list=META
+add address=57.141.8.0/24      list=META
+add address=57.141.10.0/24     list=META
+add address=57.141.12.0/24     list=META
+add address=57.144.0.0/14      list=META
+add address=66.220.144.0/20    list=META
+add address=69.63.176.0/20     list=META
+add address=69.171.224.0/19    list=META
+add address=74.119.76.0/22     list=META
+add address=102.132.96.0/20    list=META
+add address=103.4.96.0/22      list=META
+add address=129.134.0.0/17     list=META
+add address=157.240.0.0/17     list=META
+add address=157.240.192.0/18   list=META
+add address=163.70.128.0/17    list=META
+add address=173.252.64.0/18    list=META
+add address=179.60.192.0/22    list=META
+add address=185.60.216.0/22    list=META
+add address=185.89.216.0/22    list=META
+add address=204.15.20.0/22     list=META
 
-# https://suip.biz/ru/?act=all-isp&isp=Telegram%20Messenger%20Inc
-# https://github.com/itdoginfo/allow-domains/blob/main/Subnets/IPv4/telegram.lst
-# https://suip.biz/ru/?act=ipaggregator
 /ip firewall address-list
 remove [find dynamic=no list=TELEGRAM]
-add address=91.105.192.0/23  list=TELEGRAM
-add address=91.108.4.0/22    list=TELEGRAM
-add address=91.108.8.0/21    list=TELEGRAM
-add address=91.108.16.0/21   list=TELEGRAM
-add address=91.108.56.0/22   list=TELEGRAM
-add address=95.161.64.0/20   list=TELEGRAM
-add address=149.154.160.0/20 list=TELEGRAM
-add address=185.76.151.0/24  list=TELEGRAM
+add address=91.105.192.0/23    list=TELEGRAM
+add address=91.108.4.0/22      list=TELEGRAM
+add address=91.108.8.0/21      list=TELEGRAM
+add address=91.108.16.0/21     list=TELEGRAM
+add address=91.108.56.0/22     list=TELEGRAM
+add address=95.161.64.0/20     list=TELEGRAM
+add address=149.154.160.0/20   list=TELEGRAM
+add address=185.76.151.0/24    list=TELEGRAM
 
 /ip firewall address-list
 remove [find dynamic=no list=TORRENTS]
-add address=3.135.72.151  comment=anybt.eth.limo  list=TORRENTS
-add address=37.221.67.160 comment=fast-torrent.ru list=TORRENTS
-add address=193.46.255.29 comment=rutor.info      list=TORRENTS
+add address=3.135.72.151       list=TORRENTS
+add address=18.219.255.217     list=TORRENTS
+add address=37.221.67.160      list=TORRENTS
+add address=104.21.95.93       list=TORRENTS
+add address=168.119.95.238     list=TORRENTS
+add address=172.67.144.20      list=TORRENTS
+add address=193.46.255.29      list=TORRENTS
 
-# https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Subnets/IPv4/twitter.lst
 /ip firewall address-list
 remove [find dynamic=no list=TWITTER]
-add address=69.195.0.0/16    list=TWITTER
-add address=104.16.0.0/12    list=TWITTER
-add address=104.244.0.0/15   list=TWITTER
-add address=107.167.27.0/24  list=TWITTER
-add address=138.201.219.0/24 list=TWITTER
-add address=146.75.0.0/16    list=TWITTER
-add address=151.101.0.0/16   list=TWITTER
-add address=162.158.0.0/15   list=TWITTER
-add address=172.64.0.0/13    list=TWITTER
-add address=185.45.5.0/24    list=TWITTER
-add address=185.45.6.0/23    list=TWITTER
-add address=185.199.0.0/16   list=TWITTER
-add address=188.114.88.0/21  list=TWITTER
-add address=188.186.0.0/16   list=TWITTER
-add address=192.133.0.0/16   list=TWITTER
-add address=199.16.0.0/13    list=TWITTER
-add address=199.59.0.0/16    list=TWITTER
-add address=199.96.56.0/23   list=TWITTER
-add address=199.232.0.0/16   list=TWITTER
-add address=209.237.0.0/16   list=TWITTER
+add address=69.195.0.0/16      list=TWITTER
+add address=104.16.0.0/12      list=TWITTER
+add address=104.244.0.0/15     list=TWITTER
+add address=107.167.27.0/24    list=TWITTER
+add address=138.201.219.0/24   list=TWITTER
+add address=146.75.0.0/16      list=TWITTER
+add address=151.101.0.0/16     list=TWITTER
+add address=162.158.0.0/15     list=TWITTER
+add address=172.64.0.0/13      list=TWITTER
+add address=185.45.5.0/24      list=TWITTER
+add address=185.45.6.0/23      list=TWITTER
+add address=185.199.0.0/16     list=TWITTER
+add address=188.114.88.0/21    list=TWITTER
+add address=188.186.0.0/16     list=TWITTER
+add address=192.133.0.0/16     list=TWITTER
+add address=199.16.0.0/13      list=TWITTER
+add address=199.59.0.0/16      list=TWITTER
+add address=199.96.56.0/23     list=TWITTER
+add address=199.232.0.0/16     list=TWITTER
+add address=209.237.0.0/16     list=TWITTER
 
 /ip firewall address-list
 remove [find dynamic=no list=VIBER]
-add address=3.67.81.0/27      list=VIBER
-add address=3.101.175.128/27  list=VIBER
-add address=3.105.5.64/29     list=VIBER
-add address=3.112.85.80/29    list=VIBER
-add address=3.209.202.16/28   list=VIBER
-add address=18.195.4.0/23     list=VIBER
-add address=18.201.0.0/16     list=VIBER
-add address=44.192.201.128/25 list=VIBER
-add address=52.0.252.0/22     list=VIBER
-add address=65.9.175.0/24     list=VIBER
-add address=177.71.100.0/22   list=VIBER
-add address=185.117.96.0/24   list=VIBER
+add address=3.67.81.0/27       list=VIBER
+add address=3.86.37.41         list=VIBER
+add address=3.101.175.128/27   list=VIBER
+add address=3.105.5.64/29      list=VIBER
+add address=3.112.85.80/29     list=VIBER
+add address=3.167.227.76       list=VIBER
+add address=3.167.227.95       list=VIBER
+add address=3.167.227.97       list=VIBER
+add address=3.167.227.109      list=VIBER
+add address=3.209.202.16/28    list=VIBER
+add address=18.66.112.18       list=VIBER
+add address=18.66.112.23       list=VIBER
+add address=18.66.112.83       list=VIBER
+add address=18.66.112.87       list=VIBER
+add address=18.195.4.0/23      list=VIBER
+add address=18.201.0.0/16      list=VIBER
+add address=18.232.24.4        list=VIBER
+add address=23.21.92.160       list=VIBER
+add address=23.211.65.127      list=VIBER
+add address=34.192.170.47      list=VIBER
+add address=34.197.129.171     list=VIBER
+add address=35.169.174.138     list=VIBER
+add address=44.192.201.128/25  list=VIBER
+add address=44.214.47.60       list=VIBER
+add address=44.218.5.50        list=VIBER
+add address=52.0.252.0/22      list=VIBER
+add address=52.222.214.31      list=VIBER
+add address=52.222.214.46      list=VIBER
+add address=52.222.214.101     list=VIBER
+add address=52.222.214.104     list=VIBER
+add address=54.156.174.52      list=VIBER
+add address=65.9.46.7          list=VIBER
+add address=65.9.46.34         list=VIBER
+add address=65.9.46.51         list=VIBER
+add address=65.9.46.72         list=VIBER
+add address=65.9.46.76         list=VIBER
+add address=65.9.46.82         list=VIBER
+add address=65.9.46.87         list=VIBER
+add address=65.9.46.88         list=VIBER
+add address=65.9.46.91         list=VIBER
+add address=65.9.46.107        list=VIBER
+add address=65.9.46.128        list=VIBER
+add address=65.9.175.0/24      list=VIBER
+add address=100.51.234.157     list=VIBER
+add address=177.71.100.0/22    list=VIBER
+add address=185.117.96.0/24    list=VIBER
 
 /ip firewall address-list
 remove [find dynamic=no list=YOUTUBE]
-add address=8.8.4.0/24       list=YOUTUBE
-add address=8.8.8.0/24       list=YOUTUBE
-add address=8.34.208.0/20    list=YOUTUBE
-add address=8.35.192.0/20    list=YOUTUBE
-add address=23.236.48.0/20   list=YOUTUBE
-add address=23.251.128.0/19  list=YOUTUBE
-add address=34.0.0.0/10      list=YOUTUBE
-add address=34.64.0.0/10     list=YOUTUBE
-add address=34.128.0.0/10    list=YOUTUBE
-add address=35.184.0.0/13    list=YOUTUBE
-add address=35.190.0.0/15    list=YOUTUBE
-add address=35.192.0.0/14    list=YOUTUBE
-add address=35.196.0.0/15    list=YOUTUBE
-add address=35.198.0.0/16    list=YOUTUBE
-add address=35.199.0.0/17    list=YOUTUBE
-add address=35.199.128.0/18  list=YOUTUBE
-add address=35.200.0.0/13    list=YOUTUBE
-add address=35.208.0.0/12    list=YOUTUBE
-add address=64.18.0.0/15     list=YOUTUBE
-add address=64.233.128.0/18  list=YOUTUBE
-add address=66.102.0.0/20    list=YOUTUBE
-add address=66.249.64.0/18   list=YOUTUBE
-add address=66.249.80.0/20   list=YOUTUBE
-add address=70.32.128.0/19   list=YOUTUBE
-add address=72.14.192.0/18   list=YOUTUBE
-add address=74.114.24.0/21   list=YOUTUBE
-add address=74.125.0.0/16    list=YOUTUBE
-add address=104.132.0.0/14   list=YOUTUBE
-add address=104.152.0.0/14   list=YOUTUBE
-add address=104.156.64.0/18  list=YOUTUBE
-add address=104.196.0.0/14   list=YOUTUBE
-add address=104.237.160.0/19 list=YOUTUBE
-add address=107.167.160.0/19 list=YOUTUBE
-add address=108.59.80.0/20   list=YOUTUBE
-add address=108.170.192.0/18 list=YOUTUBE
-add address=108.176.0.0/15   list=YOUTUBE
-add address=130.211.0.0/16   list=YOUTUBE
-add address=136.112.0.0/12   list=YOUTUBE
-add address=142.248.0.0/14   list=YOUTUBE
-add address=146.148.0.0/14   list=YOUTUBE
-add address=162.216.144.0/21 list=YOUTUBE
-add address=162.222.176.0/21 list=YOUTUBE
-add address=172.110.32.0/21  list=YOUTUBE
-add address=172.217.0.0/16   list=YOUTUBE
-add address=172.253.0.0/16   list=YOUTUBE
-add address=173.194.0.0/16   list=YOUTUBE
-add address=173.255.112.0/20 list=YOUTUBE
-add address=185.38.0.76/31   list=YOUTUBE
-add address=192.158.28.0/22  list=YOUTUBE
-add address=192.178.0.0/15   list=YOUTUBE
-add address=193.186.4.0/24   list=YOUTUBE
-add address=199.36.154.0/23  list=YOUTUBE
-add address=199.36.156.0/24  list=YOUTUBE
-add address=199.192.112.0/21 list=YOUTUBE
-add address=199.223.232.0/21 list=YOUTUBE
-add address=207.126.144.0/20 list=YOUTUBE
-add address=207.223.160.0/20 list=YOUTUBE
-add address=208.65.152.0/22  list=YOUTUBE
-add address=208.68.108.0/22  list=YOUTUBE
-add address=208.81.188.0/22  list=YOUTUBE
-add address=208.117.224.0/19 list=YOUTUBE
-add address=209.85.128.0/17  list=YOUTUBE
-add address=212.188.32.0/21  list=YOUTUBE
-add address=216.58.192.0/19  list=YOUTUBE
-add address=216.239.32.0/19  list=YOUTUBE
+add address=8.8.4.0/24         list=YOUTUBE
+add address=8.8.8.0/24         list=YOUTUBE
+add address=8.34.208.0/20      list=YOUTUBE
+add address=8.35.192.0/20      list=YOUTUBE
+add address=23.236.48.0/20     list=YOUTUBE
+add address=23.251.128.0/19    list=YOUTUBE
+add address=34.0.0.0/9         list=YOUTUBE
+add address=34.128.0.0/10      list=YOUTUBE
+add address=35.184.0.0/13      list=YOUTUBE
+add address=35.192.0.0/14      list=YOUTUBE
+add address=35.196.0.0/15      list=YOUTUBE
+add address=35.198.0.0/16      list=YOUTUBE
+add address=35.199.0.0/17      list=YOUTUBE
+add address=35.199.128.0/18    list=YOUTUBE
+add address=35.200.0.0/13      list=YOUTUBE
+add address=35.208.0.0/12      list=YOUTUBE
+add address=46.61.136.172      list=YOUTUBE
+add address=46.61.154.76       list=YOUTUBE
+add address=46.61.154.78       list=YOUTUBE
+add address=46.61.154.82/31    list=YOUTUBE
+add address=46.61.170.82       list=YOUTUBE
+add address=64.18.0.0/15       list=YOUTUBE
+add address=64.233.128.0/18    list=YOUTUBE
+add address=66.102.0.0/20      list=YOUTUBE
+add address=66.249.64.0/18     list=YOUTUBE
+add address=70.32.128.0/19     list=YOUTUBE
+add address=72.14.192.0/18     list=YOUTUBE
+add address=74.114.24.0/21     list=YOUTUBE
+add address=74.125.0.0/16      list=YOUTUBE
+add address=85.234.4.108       list=YOUTUBE
+add address=95.167.73.13       list=YOUTUBE
+add address=95.167.73.44/31    list=YOUTUBE
+add address=95.167.73.46       list=YOUTUBE
+add address=95.167.73.108      list=YOUTUBE
+add address=104.132.0.0/14     list=YOUTUBE
+add address=104.152.0.0/14     list=YOUTUBE
+add address=104.156.64.0/18    list=YOUTUBE
+add address=104.196.0.0/14     list=YOUTUBE
+add address=104.237.160.0/19   list=YOUTUBE
+add address=107.167.160.0/19   list=YOUTUBE
+add address=108.59.80.0/20     list=YOUTUBE
+add address=108.170.192.0/18   list=YOUTUBE
+add address=108.176.0.0/15     list=YOUTUBE
+add address=130.211.0.0/16     list=YOUTUBE
+add address=136.112.0.0/12     list=YOUTUBE
+add address=142.248.0.0/14     list=YOUTUBE
+add address=146.148.0.0/14     list=YOUTUBE
+add address=162.216.144.0/21   list=YOUTUBE
+add address=162.222.176.0/21   list=YOUTUBE
+add address=172.110.32.0/21    list=YOUTUBE
+add address=172.217.0.0/16     list=YOUTUBE
+add address=172.253.0.0/16     list=YOUTUBE
+add address=173.194.0.0/16     list=YOUTUBE
+add address=173.255.112.0/20   list=YOUTUBE
+add address=185.38.0.76/31     list=YOUTUBE
+add address=192.158.28.0/22    list=YOUTUBE
+add address=192.178.0.0/15     list=YOUTUBE
+add address=193.186.4.0/24     list=YOUTUBE
+add address=199.36.154.0/23    list=YOUTUBE
+add address=199.36.156.0/24    list=YOUTUBE
+add address=199.192.112.0/21   list=YOUTUBE
+add address=199.223.232.0/21   list=YOUTUBE
+add address=207.126.144.0/20   list=YOUTUBE
+add address=207.223.160.0/20   list=YOUTUBE
+add address=208.65.152.0/22    list=YOUTUBE
+add address=208.68.108.0/22    list=YOUTUBE
+add address=208.81.188.0/22    list=YOUTUBE
+add address=208.117.224.0/19   list=YOUTUBE
+add address=209.85.128.0/17    list=YOUTUBE
+add address=212.188.32.0/21    list=YOUTUBE
+add address=213.59.237.153     list=YOUTUBE
+add address=213.59.237.154     list=YOUTUBE
+add address=213.59.237.161     list=YOUTUBE
+add address=213.59.237.212/31  list=YOUTUBE
+add address=213.59.237.214     list=YOUTUBE
+add address=213.59.237.217     list=YOUTUBE
+add address=213.59.237.218     list=YOUTUBE
+add address=213.59.237.220/31  list=YOUTUBE
+add address=213.59.237.223     list=YOUTUBE
+add address=213.59.237.225     list=YOUTUBE
+add address=213.59.237.226/31  list=YOUTUBE
+add address=216.58.192.0/19    list=YOUTUBE
+add address=216.239.32.0/19    list=YOUTUBE
 ```
 
 
@@ -263,7 +311,6 @@ add address=216.239.32.0/19  list=YOUTUBE
   Вместо DNS от Яндекса (**77.88.8.88**) можно использовать любой симпатичный вам DNS, например от Cloudflare: **1.1.1.1**.
 
 ```bash
-# https://github.com/itdoginfo/allow-domains/blob/main/Services/cloudflare.lst
 /ip dns static
 remove [find address-list=CLOUDFLARE]
 add address-list=CLOUDFLARE forward-to=77.88.8.88 match-subdomain=yes name=cdnjs.com            type=FWD
@@ -271,7 +318,6 @@ add address-list=CLOUDFLARE forward-to=77.88.8.88 match-subdomain=yes name=cloud
 add address-list=CLOUDFLARE forward-to=77.88.8.88 match-subdomain=yes name=cloudflarestatus.com type=FWD
 add address-list=CLOUDFLARE forward-to=77.88.8.88 match-subdomain=yes name=one.one.one.one      type=FWD
 
-# https://github.com/itdoginfo/allow-domains/blob/main/Services/google_ai.lst
 /ip dns static
 remove [find address-list=GOOGLEAI]
 add address-list=GOOGLEAI forward-to=77.88.8.88 match-subdomain=yes name=ai.google.dev                      type=FWD
@@ -295,7 +341,6 @@ add address-list=GOOGLEAI forward-to=77.88.8.88 match-subdomain=yes name=noteboo
 add address-list=GOOGLEAI forward-to=77.88.8.88 match-subdomain=yes name=proactivebackend-pa.googleapis.com type=FWD
 add address-list=GOOGLEAI forward-to=77.88.8.88 match-subdomain=yes name=stitch.withgoogle.com              type=FWD
 
-# https://github.com/itdoginfo/allow-domains/blob/main/Services/google_play.lst
 /ip dns static
 remove [find address-list=GOOGLEPLAY]
 add address-list=GOOGLEPLAY forward-to=77.88.8.88 match-subdomain=yes name=android.clients.google.com                        type=FWD
@@ -311,8 +356,6 @@ add address-list=GOOGLEPLAY forward-to=77.88.8.88 match-subdomain=yes name=play.
 add address-list=GOOGLEPLAY forward-to=77.88.8.88 match-subdomain=yes name=play-lh.googleusercontent.com                     type=FWD
 add address-list=GOOGLEPLAY forward-to=77.88.8.88 match-subdomain=yes name=prod-lt-playstoregatewayadapter-pa.googleapis.com type=FWD
 
-# https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Services/meta.lst
-# https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_domainlist.txt
 /ip dns static
 remove [find address-list=META]
 add address-list=META forward-to=77.88.8.88 match-subdomain=yes name=cdninstagram.com type=FWD
@@ -332,7 +375,6 @@ add address-list=META forward-to=77.88.8.88 match-subdomain=yes name=whatsapp.bi
 add address-list=META forward-to=77.88.8.88 match-subdomain=yes name=whatsapp.com     type=FWD
 add address-list=META forward-to=77.88.8.88 match-subdomain=yes name=whatsapp.net     type=FWD
 
-# https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Services/telegram.lst
 /ip dns static
 remove [find address-list=TELEGRAM]
 add address-list=TELEGRAM forward-to=77.88.8.88 match-subdomain=yes name=cdn-telegram.org type=FWD
@@ -358,10 +400,11 @@ add address-list=TELEGRAM forward-to=77.88.8.88 match-subdomain=yes name=usercon
 /ip dns static
 remove [find address-list=TORRENTS]
 add address-list=TORRENTS forward-to=77.88.8.88 match-subdomain=yes name=anybt.eth.limo  type=FWD
+add address-list=TORRENTS forward-to=77.88.8.88 match-subdomain=yes name=cdnbase.com     type=FWD
 add address-list=TORRENTS forward-to=77.88.8.88 match-subdomain=yes name=fast-torrent.ru type=FWD
+add address-list=TORRENTS forward-to=77.88.8.88 match-subdomain=yes name=nnmclub.to      type=FWD
 add address-list=TORRENTS forward-to=77.88.8.88 match-subdomain=yes name=rutor.info      type=FWD
 
-# https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Services/twitter.lst
 /ip dns static
 remove [find address-list=TWITTER]
 add address-list=TWITTER forward-to=77.88.8.88 match-subdomain=yes name=ads-twitter.com         type=FWD
@@ -398,8 +441,6 @@ add address-list=VIBER forward-to=77.88.8.88 match-subdomain=yes name=viber.net 
 add address-list=VIBER forward-to=77.88.8.88 match-subdomain=yes name=viberapi.com  type=FWD
 add address-list=VIBER forward-to=77.88.8.88 match-subdomain=yes name=viberdns.com  type=FWD
 
-# https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Services/youtube.lst
-# https://dtf.ru/ask/3130713-polnyi-spisok-adresov-yutuba
 /ip dns static
 remove [find address-list=YOUTUBE]
 add address-list=YOUTUBE forward-to=77.88.8.88 match-subdomain=yes name=ggpht.com                            type=FWD
