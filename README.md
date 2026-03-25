@@ -1,3 +1,5 @@
+# MikroTik: Обход блокировок используя Wireguard на зарубежном хостинге
+
 Чтобы запустить Wireguard на MikroTik, обновите его прошивку до RouterOS 7.x.
 
 Допустим, Wireguard на зарубежном хостинге (например: [HostVDS](https://hostvds.com/?affiliate_uuid=45e30dfa-ebf0-4f0c-aca2-3f3cfd07f84f), [VDSina](https://vdsina.com/ru)) выдал нам вот такой конфиг:
