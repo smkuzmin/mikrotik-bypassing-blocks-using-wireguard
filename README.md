@@ -72,8 +72,14 @@ add address=192.168.0.0/16 list=PRIVATE-LANS
 remove [find dynamic=no list=CLOUDFLARE]
 add address=1.0.0.0/24         list=CLOUDFLARE
 add address=1.1.1.0/24         list=CLOUDFLARE
+add address=3.164.206.0/24     list=CLOUDFLARE
 add address=8.6.112.0/24       list=CLOUDFLARE
 add address=8.47.69.0/24       list=CLOUDFLARE
+add address=13.33.235.0/24     list=CLOUDFLARE
+add address=18.165.140.0/24    list=CLOUDFLARE
+add address=34.36.205.0/24     list=CLOUDFLARE
+add address=35.201.124.0/24    list=CLOUDFLARE
+add address=63.140.62.0/24     list=CLOUDFLARE
 add address=103.21.244.0/22    list=CLOUDFLARE
 add address=103.22.200.0/22    list=CLOUDFLARE
 add address=103.31.4.0/22      list=CLOUDFLARE
