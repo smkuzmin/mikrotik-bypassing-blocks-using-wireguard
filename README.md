@@ -276,7 +276,6 @@ add address=104.244.0.0/15     list=TWITTER
 add address=107.167.27.0/24    list=TWITTER
 add address=138.201.219.0/24   list=TWITTER
 add address=146.75.0.0/16      list=TWITTER
-add address=151.101.0.0/16     list=TWITTER
 add address=162.158.0.0/15     list=TWITTER
 add address=172.64.0.0/13      list=TWITTER
 add address=185.45.5.0/24      list=TWITTER
