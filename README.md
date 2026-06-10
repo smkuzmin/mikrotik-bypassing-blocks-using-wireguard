@@ -1,8 +1,8 @@
 ## MikroTik: Обход блокировок используя Wireguard на зарубежном хостинге
 
-Чтобы запустить Wireguard на MikroTik, обновите его прошивку до RouterOS 7.x.
+Чтобы запустить WireGuard на MikroTik, обновите его прошивку до RouterOS 7.x.
 
-Допустим, Wireguard на зарубежном хостинге (например: [HostVDS](https://hostvds.com/?affiliate_uuid=45e30dfa-ebf0-4f0c-aca2-3f3cfd07f84f), [VDSina](https://vdsina.com/ru)) выдал нам вот такой конфиг:
+Допустим, WireGuard на зарубежном хостинге (например: [HostVDS](https://hostvds.com/?affiliate_uuid=45e30dfa-ebf0-4f0c-aca2-3f3cfd07f84f), [VDSina](https://vdsina.com/ru)) выдал нам вот такой конфиг:
 
 ```ini
 [Interface]
@@ -21,45 +21,40 @@ Endpoint = 193.188.21.123:12674
 
 Тогда настройка MikroTik будет выглядеть следующим образом:
 
+1. **Создаем интерфейс WireGuard
 
-1. **Создайте интерфейс Wireguard на RouterOS**
-
-  Значение параметра **private-key** измените на соответствующие из полученного конфига Wireguard.
+  Значение параметра **private-key** меняем на соответствующее из полученного конфига WireGuard.
 
 ```ini
 /interface wireguard
 add name=wg1 private-key="PrIvaTeKeYxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
 ```
 
+2. **Назначаем IP-адрес интерфейсу WireGuard**
 
-2. **Назначьте IP-адрес для интерфейса Wireguard**
-
-  Здесь **10.8.0.7/24** - адрес из полученного конфига Wireguard.
+  Здесь **10.8.0.7/24** - адрес из полученного конфига WiregGuard.
 
 ```bash
 /ip address
 add address=10.8.0.7/24 interface=wg1
 ```
 
+3. **Добавляем пир (узел) с параметрами из конфига**
 
-3. **Добавьте пир (узел) с параметрами из конфига**
-
-  Все параметры измените на соответствующие из полученного конфига Wireguard (если нет **PresharedKey** - пропустите его).
+  Все параметры меняем на соответствующие из полученного конфига WireGuard (если нет **PresharedKey** - пропускаем его).
 
 ```bash
 /interface wireguard peers
 add allowed-address=0.0.0.0/0,::/0 endpoint-address=193.188.21.123 endpoint-port=12674 interface=wg1 name=peer1 persistent-keepalive=25s preshared-key="PrEsHaReDkEyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=" public-key="PuBlIcKeYxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
 ```
 
-
-4. **Проверьте работу Wireguard**
+4. **Проверяем работу WireGuard**
 
 ```bash
 /ping 8.8.8.8 interface=wg1
 ```
 
-
-5. **Создайте списки частных сетей и сетей заблокированных сервисов**
+5. **Создаем списки частных сетей и сетей заблокированных сервисов**
 
 ```bash
 /ip firewall address-list
@@ -459,8 +454,7 @@ add address=216.239.32.0/19    list=YOUTUBE
 add address=217.118.183.0/24   list=YOUTUBE
 ```
 
-
-6. **Создайте правила для доменов заблокированных сервисов**
+6. **Создаем правила для доменов заблокированных сервисов**
 
   Эти правила будут направлять нужные нам запросы вместе с поддоменами на DNS **77.88.8.88**, а полученные ответы автоматически заносить в соответствующие адрес-листы, где они будут жить до протухания кэша DNS.
 
@@ -621,16 +615,14 @@ add address-list=YOUTUBE forward-to=77.88.8.88 match-subdomain=yes name=ytimg.l.
 add address-list=YOUTUBE forward-to=77.88.8.88 match-subdomain=yes name=yting.com                            type=FWD
 ```
 
-
-7. **Создайте таблицу маршрутизации для VPN**
+7. **Создаем таблицу маршрутизации для VPN**
 
 ```bash
 /routing table
 add fib name=bypass-vpn
 ```
 
-
-8. **Создайте правила, маркирующее трафик к заблокированным сервисам**
+8. **Создаем правила, маркирующие трафик к заблокированным сервисам**
 
   Первое правило не позволит локальным адресам улететь в туннель.
 
@@ -649,16 +641,15 @@ add action=mark-connection chain=prerouting comment="MARK CONNECTIONS ALL FROM P
 add action=mark-routing    chain=prerouting comment="MARK ROUTING ALL FROM PRIVATE-LANS MARKED VPN-CONN AS BYPASS-VPN"        connection-mark=bypass-vpn-conn                                             new-routing-mark=bypass-vpn      passthrough=no  src-address-list=PRIVATE-LANS
 ```
 
-
-9. **Создайте правило, которое согласует MTU с VPN-интерфейсом**
+9. **Создаем правила, которые согласуют MTU с VPN-интерфейсом**
 
 ```bash
 /ip firewall mangle
-add action=change-mss chain=forward comment="CHANGE MSS FOR TCP SYN TO BYPASS-VPN-IF" new-mss=clamp-to-pmtu out-interface=wg1 passthrough=yes protocol=tcp tcp-flags=syn
+add action=change-mss chain=forward comment="CLAMP MSS FOR TCP SYN TO BYPASS-VPN"   new-mss=clamp-to-pmtu out-interface=wg1 passthrough=yes protocol=tcp tcp-flags=syn
+add action=change-mss chain=forward comment="CLAMP MSS FOR TCP SYN FROM BYPASS-VPN" new-mss=clamp-to-pmtu  in-interface=wg1 passthrough=yes protocol=tcp tcp-flags=syn
 ```
 
-
-10. **Создайте правила маскарадинга для VPN-трафика**
+10. **Создаем правила маскарадинга для VPN-трафика**
 
   Первое правило не позволит маскарадить трафик из локальных сетей к локальным сетям.
 
@@ -668,16 +659,14 @@ add action=accept chain=srcnat comment="ACCEPT ALL FROM PRIVATE-LANS TO PRIVATE-
 add action=masquerade chain=srcnat comment="MASQ ALL FROM PRIVATE-LANS MARKED AS BYPASS-VPN --> BYPASS-VPN-IF" out-interface=wg1 routing-mark=bypass-vpn src-address-list=PRIVATE-LANS
 ```
 
-
-11. **Настройте маршрутизацию VPN-трафика через интерфейс Wireguard**
+11. **Настраиваем маршрутизацию VPN-трафика через интерфейс WireGuard**
 
 ```bash
 /ip route
 add dst-address=0.0.0.0/0 gateway=wg1 routing-table=bypass-vpn
 ```
 
-
-12. **Проверьте маршрутизацию с клиентского ПК**
+12. **Проверяем маршрутизацию с клиентского ПК**
 
   Трассировка ya.ru после нашего роутера НЕ ДОЛЖНА проходить через хоп из сети 10.8.0.0/24:
 ```powershell
@@ -702,7 +691,6 @@ C:\>tracert googlevideo.com
 ```
 
   Если все так - поздравляю, вы сломали чебурнет!
-
 
 **Ссылки по теме:**
 
