@@ -1,4 +1,4 @@
-## MikroTik: Обход блокировок используя Wireguard на зарубежном хостинге
+## MikroTik: Обход блокировок используя Wireguard
 
 Чтобы запустить WireGuard на MikroTik, обновите его прошивку до RouterOS 7.x.
 
