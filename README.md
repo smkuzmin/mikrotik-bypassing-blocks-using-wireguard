@@ -48,13 +48,7 @@ add address=10.8.0.7/24 interface=wg1
 add allowed-address=0.0.0.0/0,::/0 endpoint-address=193.188.21.123 endpoint-port=12674 interface=wg1 name=peer1 persistent-keepalive=25s preshared-key="PrEsHaReDkEyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=" public-key="PuBlIcKeYxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
 ```
 
-4. **Проверяем работу WireGuard**
-
-```bash
-/ping 8.8.8.8 interface=wg1
-```
-
-5. **Создаем списки частных сетей и сетей заблокированных сервисов**
+4. **Создаем списки частных сетей и сетей заблокированных сервисов**
 
 ```bash
 /ip firewall address-list
@@ -446,7 +440,7 @@ add address=216.239.32.0/19    list=YOUTUBE
 add address=217.118.183.0/24   list=YOUTUBE
 ```
 
-6. **Создаем правила для доменов заблокированных сервисов**
+5. **Создаем правила для доменов заблокированных сервисов**
 
   Эти правила будут направлять нужные нам запросы вместе с поддоменами на DNS **77.88.8.88**, а полученные ответы автоматически заносить в соответствующие адрес-листы, где они будут жить до протухания кэша DNS.
 
@@ -607,14 +601,14 @@ add address-list=YOUTUBE forward-to=77.88.8.88 match-subdomain=yes name=ytimg.l.
 add address-list=YOUTUBE forward-to=77.88.8.88 match-subdomain=yes name=yting.com                            type=FWD
 ```
 
-7. **Создаем таблицу маршрутизации для VPN**
+6. **Создаем таблицу маршрутизации для VPN**
 
 ```bash
 /routing table
 add fib name=bypass-vpn
 ```
 
-8. **Создаем правила, маркирующие трафик к заблокированным сервисам**
+7. **Создаем правила, маркирующие трафик к заблокированным сервисам**
 
   Первое правило не позволит локальным адресам улететь в туннель.
 
@@ -633,7 +627,7 @@ add action=mark-connection chain=prerouting comment="MARK CONNECTIONS ALL FROM P
 add action=mark-routing    chain=prerouting comment="MARK ROUTING ALL FROM PRIVATE-LANS MARKED VPN-CONN AS BYPASS-VPN"        connection-mark=bypass-vpn-conn                                             new-routing-mark=bypass-vpn      passthrough=no  src-address-list=PRIVATE-LANS
 ```
 
-9. **Создаем правила, которые согласуют MTU с VPN-интерфейсом**
+8. **Создаем правила, которые согласуют MTU с VPN-интерфейсом**
 
 ```bash
 /ip firewall mangle
@@ -641,7 +635,7 @@ add action=change-mss chain=forward comment="CLAMP MSS FOR TCP SYN TO BYPASS-VPN
 add action=change-mss chain=forward comment="CLAMP MSS FOR TCP SYN FROM BYPASS-VPN" new-mss=clamp-to-pmtu  in-interface=wg1 passthrough=yes protocol=tcp tcp-flags=syn
 ```
 
-10. **Создаем правила маскарадинга для VPN-трафика**
+9. **Создаем правила маскарадинга для VPN-трафика**
 
   Первое правило не позволит маскарадить трафик из локальных сетей к локальным сетям.
 
@@ -651,14 +645,14 @@ add action=accept chain=srcnat comment="ACCEPT ALL FROM PRIVATE-LANS TO PRIVATE-
 add action=masquerade chain=srcnat comment="MASQ ALL FROM PRIVATE-LANS MARKED AS BYPASS-VPN --> BYPASS-VPN-IF" out-interface=wg1 routing-mark=bypass-vpn src-address-list=PRIVATE-LANS
 ```
 
-11. **Настраиваем маршрутизацию VPN-трафика через интерфейс WireGuard**
+10. **Настраиваем маршрутизацию VPN-трафика через интерфейс WireGuard**
 
 ```bash
 /ip route
 add dst-address=0.0.0.0/0 gateway=wg1 routing-table=bypass-vpn
 ```
 
-12. **Проверяем маршрутизацию с клиентского ПК**
+11. **Проверяем маршрутизацию с клиентского ПК**
 
   Трассировка ya.ru после нашего роутера НЕ ДОЛЖНА проходить через хоп из сети 10.8.0.0/24:
 ```powershell
